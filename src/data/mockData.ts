@@ -3,8 +3,8 @@ import { User, Company, Contact, Deal, Activity } from '../types';
 export const mockUsers: User[] = [
   {
     id: '1',
-    name: 'Mike Johnson',
-    email: 'mike.johnson@company.com',
+    name: 'Harry Supasella',
+    email: 'harry.supasella@company.com',
     role: 'sales_manager',
     territory: 'Northeast',
     active: true,

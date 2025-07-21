@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCRM } from '../../context/CRMContext';
-import { Contact, Company, User } from '../../types';
+import { Contact } from '../../types';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
@@ -256,7 +256,7 @@ const ContactsView: React.FC = () => {
             <Select
               label="Status"
               value={formData.status}
-              onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+              onChange={(e) => setFormData({ ...formData, status: e.target.value as 'active' | 'inactive' | 'do_not_contact' })}
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>

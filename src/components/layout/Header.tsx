@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Bell, Settings, User } from 'lucide-react';
+import { Search, Bell, Settings } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 import Button from '../ui/Button';
 
@@ -12,42 +12,52 @@ const Header: React.FC<HeaderProps> = ({ title, subtitle }) => {
   const { state } = useCRM();
 
   return (
-    <div className="bg-white border-b border-gray-200 px-6 py-4">
+    <div className="card-premium border-b border-gray-200/20 px-8 py-6 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
+          <h1 className="text-3xl font-bold text-gradient">{title}</h1>
           {subtitle && (
-            <p className="text-sm text-gray-500 mt-1">{subtitle}</p>
+            <p className="text-lg text-gray-600 mt-2">{subtitle}</p>
           )}
         </div>
         
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
           {/* Search */}
           <div className="relative">
-            <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <Search size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
               type="text"
-              placeholder="Search..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64"
+              placeholder="Search everything..."
+              className="pl-12 pr-6 py-3 glass-effect border border-white/30 rounded-xl focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 w-80 text-sm placeholder-gray-500 backdrop-blur-sm"
             />
           </div>
           
           {/* Notifications */}
-          <Button variant="ghost" size="sm" icon={Bell} />
+          <Button variant="secondary" size="sm" className="hover-lift glass-effect border-white/30 relative p-3">
+            <Bell size={18} />
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-red-400 to-pink-500 rounded-full animate-pulse"></div>
+          </Button>
           
           {/* Settings */}
-          <Button variant="ghost" size="sm" icon={Settings} />
+          <Button variant="secondary" size="sm" className="hover-lift glass-effect border-white/30 p-3">
+            <Settings size={18} />
+          </Button>
           
           {/* User Profile */}
-          <div className="flex items-center space-x-2">
-            <img 
-              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
-              alt="Profile"
-              className="w-8 h-8 rounded-full object-cover"
-            />
-            <span className="text-sm font-medium text-gray-700">
-              {state.currentUser?.name || 'User'}
-            </span>
+          <div className="flex items-center space-x-4 pl-6 border-l border-gray-300/30">
+            <div className="text-right">
+              <span className="text-sm font-medium text-gray-600">
+                Welcome back
+              </span>
+              <p className="text-lg font-semibold text-gray-900">
+                {state.currentUser?.name?.split(' ')[0] || 'User'}
+              </p>
+            </div>
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg hover-lift cursor-pointer">
+              <span className="text-white font-bold text-lg">
+                {state.currentUser?.name?.charAt(0) || 'U'}
+              </span>
+            </div>
           </div>
         </div>
       </div>

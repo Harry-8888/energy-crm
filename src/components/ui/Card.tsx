@@ -11,15 +11,15 @@ const Card: React.FC<CardProps> = ({
   children, 
   className = '', 
   padding = 'md',
-  hover = false 
+  hover = true 
 }) => {
-  const baseClasses = 'bg-white rounded-lg border border-gray-200 shadow-sm';
-  const hoverClasses = hover ? 'hover:shadow-md transition-shadow' : '';
+  const baseClasses = 'card-premium rounded-2xl animate-fade-in';
+  const hoverClasses = hover ? 'hover-lift' : '';
   
   const paddings = {
-    sm: 'p-4',
-    md: 'p-6',
-    lg: 'p-8',
+    sm: 'p-6',
+    md: 'p-8',
+    lg: 'p-10',
   };
 
   return (

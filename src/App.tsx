@@ -3,6 +3,11 @@ import { CRMProvider } from './context/CRMContext';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
 import Dashboard from './components/views/Dashboard';
+import ContactsView from './components/views/ContactsView';
+import ActivitiesView from './components/views/ActivitiesView';
+import DealsView from './components/views/DealsView';
+import CompaniesView from './components/views/CompaniesView';
+import SettingsView from './components/views/SettingsView';
 
 function App() {
   const [activeView, setActiveView] = useState('dashboard');
@@ -50,15 +55,15 @@ function App() {
       case 'dashboard':
         return <Dashboard />;
       case 'contacts':
-        return <div className="p-6"><h2 className="text-xl">Contacts View - Coming Soon</h2></div>;
+        return <ContactsView />;
       case 'companies':
-        return <div className="p-6"><h2 className="text-xl">Companies View - Coming Soon</h2></div>;
+        return <CompaniesView />;
       case 'deals':
-        return <div className="p-6"><h2 className="text-xl">Deals View - Coming Soon</h2></div>;
+        return <DealsView />;
       case 'activities':
-        return <div className="p-6"><h2 className="text-xl">Activities View - Coming Soon</h2></div>;
+        return <ActivitiesView />;
       case 'settings':
-        return <div className="p-6"><h2 className="text-xl">Settings View - Coming Soon</h2></div>;
+        return <SettingsView />;
       default:
         return <Dashboard />;
     }
@@ -66,14 +71,14 @@ function App() {
 
   return (
     <CRMProvider>
-      <div className="flex h-screen bg-gray-50">
+      <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         <Sidebar activeView={activeView} onViewChange={setActiveView} />
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header 
             title={getViewTitle(activeView)} 
             subtitle={getViewSubtitle(activeView)} 
           />
-          <main className="flex-1 overflow-y-auto p-6">
+          <main className="flex-1 overflow-y-auto p-8 animate-fade-in">
             {renderView()}
           </main>
         </div>

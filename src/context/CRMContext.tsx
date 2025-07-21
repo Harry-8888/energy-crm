@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
-import { CRMState, CRMAction, User, Company, Contact, Deal, Activity } from '../types';
+import { CRMState, CRMAction } from '../types';
 import { mockUsers, mockCompanies, mockContacts, mockDeals, mockActivities } from '../data/mockData';
 
 const initialState: CRMState = {
@@ -113,7 +113,7 @@ export function CRMProvider({ children }: { children: ReactNode }) {
     const savedData = localStorage.getItem('energy-crm-data');
     if (savedData) {
       try {
-        const parsedData = JSON.parse(savedData);
+        JSON.parse(savedData);
         // Clear old data and use updated mock data
         localStorage.removeItem('energy-crm-data');
         dispatch({
